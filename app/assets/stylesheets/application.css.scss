@@ -33,7 +33,11 @@
      font-url('Gotham-Medium.ttf') format('truetype');
    font-weight: normal;
    font-style: normal;
- } 
+ }
+
+ * {
+   font-family: 'Gotham-Book';
+ }
 
 
 .emmabedroom {
@@ -41,14 +45,20 @@
 }
 
 .titlehead {
-  background-image: url(emmaeyes.jpg);
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url('bedroom.jpg');
   background-size:cover;
-  height:400px;
+  height:600px;
 }
 
 .titlehead h1 {
   margin-top:20px;
     font-family: 'Gotham-Book';
+}
+
+.about {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9) ), url('BabyRoom.jpg');
+  background-size:cover;
+  height:600px;
 }
 
 .navbar {
@@ -58,6 +68,86 @@
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.gamebtn {
+  color:ghostwhite;
+  text-align:center;
+  border:2px solid white;
+  padding:5px;
+  width:250px;
+  margin-top:50px;
+  margin:0 auto;
+  top:20px;
+  background-color:none;
+  margin:0 auto;
+  font-size: 3em;
+}
+
+.gamebtn:hover {
+  background-color:maroon;
+  transition: 2s;
+}
+
+.signupbtn {
+  color:ghostwhite;
+  text-align:center;
+  border:2px solid white;
+  padding:15px;
+  width:200px;
+  margin:0 auto;
+  top:10;
+  background-color:gray;
+  margin:0 auto;
+  margin-top:100px;
+  position:relative;
+  border-radius: 25px;
+}
+
+.signupbtn:hover {
+  background-color:red;
+}
+
+.wrap {width:200px; margin:auto;  z-index:1;}
+
+.msg {
+  color: whitesmoke;
+  text-align:center;
+  font-family: 'Bree Serif', Courier, monospaced;
+  font-size:3.5em;
+  width:200px;
+  position:absolute;
+  margin:55px 0 0 2px;
+  pointer-events: none;
+}
+
+.sticker {
+  width:200px;
+  height:200px;
+  position:absolute;
+  background: url(https://s-media-cache-ak0.pinimg.com/236x/54/c8/30/54c830882dfe701a74e14947554a929a.jpg) top center no-repeat;
+  animation: spin 10s linear infinite;
+  /*Set our animation play state to paused initially */
+  animation-play-state: running;
+  border-radius: 110px;
+}
+
+@keyframes spin {
+  100% {transform: rotate(1turn); }
+}
+
+.funhouse {
+  display:inline-block;
+  margin-left:-8%;
+  color:white;
+  transition: all 2s ease;
+}
+
+.funhouse:hover {
+  text-decoration:none;
+  color:red;
+  font-size:4em;
+  transition: all 2s ease;
 }
 
 h1 {

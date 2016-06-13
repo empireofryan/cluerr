@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   post 'users/charge', to: 'users#charge'
   get 'users/cancel_subscription', to: 'users#cancel_subscription'
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   root to: "home#index"
   resources :publications, only: [:index, :show]
   namespace :admin do
     resources :publications
   end
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
