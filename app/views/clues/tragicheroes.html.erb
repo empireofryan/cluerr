@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<script   src="https://code.jquery.com/jquery-3.0.0.js"   integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo="   crossorigin="anonymous"></script>
+    <head>
+        <meta charset="utf-8" />
+        <title>Shuffle Text Effect with jQuery | Tutorialzine Demo</title>
+
+        <!-- Our CSS stylesheet file -->
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" type="text/css" />
+
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+        /*-------------------------
+	Simple reset
+--------------------------*/
+
+
+*{
+	margin:0;
+	padding:0;
+
+}
+
+body {
+  background-color:black;
+}
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	color:#54a6de;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+
+
+/*----------------------------
+	Container & textbox
+-----------------------------*/
+
+
+#container{
+	color: white;
+	font-size: 58px;
+	margin: 0 auto;
+	padding: 200px 0 100px;
+	width: 650px;
+	position:relative;
+	min-height: 90px;
+
+	font-family:'Open Sans Condensed',sans-serif;
+	text-shadow:1px 1px 0 rgba(255,255,255,0.5);
+}
+
+
+#userText{
+	background:none;
+	border:none;
+	border-bottom:1px solid #aaa;
+
+	color: white;
+    display: block;
+    font-family: 'Open Sans Condensed',sans-serif;
+    font-size: 26px;
+    margin: 0 auto 0px;
+    padding: 10px;
+    text-align: center;
+    width: 400px;
+    outline: none;
+}
+
+
+
+
+        </style>
+    </head>
+
+    <body>
+
+		<div id="container">Unscramble the following</div>
+
+
+		<input type="text" id="userText" />
+
+
+
+        <!-- JavaScript includes -->
+
+
+    </body>
+</html>
+
+
+
+<script>
+/**
+ * @name		Shuffle Letters
+ * @author		Martin Angelov
+ * @version 	1.0
+ * @url			http://tutorialzine.com/2011/09/shuffle-letters-effect-jquery/
+ * @license		MIT License
+ */
+
+(function($){
+
+	$.fn.shuffleLetters = function(prop){
+
+		var options = $.extend({
+			"step"		: 12,			// How many times should the letters be changed
+			"fps"		: 25,			// Frames Per Second
+			"text"		: "", 			// Use this text instead of the contents
+			"callback"	: function(){}	// Run once the animation is complete
+		},prop)
+
+		return this.each(function(){
+
+			var el = $(this),
+				str = "";
+
+
+			// Preventing parallel animations using a flag;
+
+			if(el.data('animated')){
+				return true;
+			}
+
+			el.data('animated',true);
+
+
+			if(options.text) {
+				str = options.text.split('');
+			}
+			else {
+				str = el.text().split('');
+			}
+
+			// The types array holds the type for each character;
+			// Letters holds the positions of non-space characters;
+
+			var types = [],
+				letters = [];
+
+			// Looping through all the chars of the string
+
+			for(var i=0;i<str.length;i++){
+
+				var ch = str[i];
+
+				if(ch == " "){
+					types[i] = "space";
+					continue;
+				}
+				else if(/[a-z]/.test(ch)){
+					types[i] = "lowerLetter";
+				}
+				else if(/[A-Z]/.test(ch)){
+					types[i] = "upperLetter";
+				}
+				else {
+					types[i] = "symbol";
+				}
+
+				letters.push(i);
+			}
+
+			el.html("");
+
+			// Self executing named function expression:
+
+			(function shuffle(start){
+
+				// This code is run options.fps times per second
+				// and updates the contents of the page element
+
+				var i,
+					len = letters.length,
+					strCopy = str.slice(0);	// Fresh copy of the string
+
+				if(start>len){
+
+					// The animation is complete. Updating the
+					// flag and triggering the callback;
+
+					el.data('animated',false);
+					options.callback(el);
+					return;
+				}
+
+				// All the work gets done here
+				for(i=Math.max(start,0); i < len; i++){
+
+					// The start argument and options.step limit
+					// the characters we will be working on at once
+
+					if( i < start+options.step){
+						// Generate a random character at thsi position
+						strCopy[letters[i]] = randomChar(types[letters[i]]);
+					}
+					else {
+						strCopy[letters[i]] = "";
+					}
+				}
+
+				el.text(strCopy.join(""));
+
+				setTimeout(function(){
+
+					shuffle(start+1);
+
+				},2000/options.fps);
+
+			})(-options.step);
+
+
+		});
+	};
+
+	function randomChar(type){
+		var pool = "";
+
+		if (type == "lowerLetter"){
+			pool = "abcdefghijklmnopqrstuvwxyz0123456789";
+		}
+		else if (type == "upperLetter"){
+			pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		}
+		else if (type == "symbol"){
+			pool = ",.?/\\(^)![]{}*&^%$#'\"";
+		}
+
+		var arr = pool.split('');
+		return arr[Math.floor(Math.random()*arr.length)];
+	}
+
+})(jQuery);
+</script>
+<script>
+$(function(){
+
+	// container is the DOM element;
+	// userText is the textbox
+
+	var container = $("#container")
+		userText = $('#userText');
+
+	// Shuffle the contents of container
+	container.shuffleLetters();
+
+	// Bind events
+	userText.click(function () {
+
+	  userText.val("");
+
+	}).bind('keypress',function(e){
+
+		if(e.keyCode == 13){
+
+			// The return key was pressed
+
+			container.shuffleLetters({
+				"text": userText.val()
+			});
+
+			userText.val("");
+		}
+
+	}).hide();
+
+	// Leave a 4 second pause
+
+	setTimeout(function(){
+
+		// Shuffle the container with custom text
+		container.shuffleLetters({
+			"text": "OPUSDEI | THELMA | EROOM"
+		});
+
+		userText.val("ס₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞΞΞ>").fadeIn();
+
+	},6000);
+
+});
+
+
+</script>

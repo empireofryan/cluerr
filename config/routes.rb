@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :publications
   end
+  resources :twilio
   get 'clues/spotlight', to: 'clues#spotlight'
+  get 'clues/tragicheroes', to: 'clues#tragicheroes'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
