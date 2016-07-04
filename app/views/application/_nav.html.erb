@@ -1,13 +1,12 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <%= image_tag("Teddy.png", alt: 'Teddy', class: "emmabedroom", style: 'width:35px') %>
-      <a class="navbar-brand" href="/">Logo</a>
+    <div class="navbar-header" >
+      <%= link_to image_tag("Teddy.png", alt: 'Teddy', class: "emmabedroom", style: 'width:35px; margin-left:20px;'), root_path %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:100%; text-align:center">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:100%; text-align:center" >
 
         <% if user_signed_in? %>
           <% if current_page?(controller: 'clues', action: 'spotlight') %>
@@ -51,3 +50,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<script>
+$('#myAffix').affix({
+  offset: {
+    top: 100,
+    bottom: function () {
+      return (this.bottom = $('.footer').outerHeight(true))
+    }
+  }
+})
+</script>

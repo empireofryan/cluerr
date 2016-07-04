@@ -40,6 +40,7 @@
  }
 
 
+
 .emmabedroom {
   width:100%;
 }
@@ -74,12 +75,11 @@
   color:ghostwhite;
   text-align:center;
   border:2px solid white;
-  padding:5px;
+  padding:20px;
   width:250px;
   margin-top:50px;
   margin:0 auto;
   top:20px;
-  background-color:none;
   margin:0 auto;
   font-size: 3em;
 }
@@ -130,6 +130,7 @@
   /*Set our animation play state to paused initially */
   animation-play-state: running;
   border-radius: 110px;
+  vertical-align:middle;
 }
 
 @keyframes spin {
@@ -141,13 +142,17 @@
   margin-left:-8%;
   color:white;
   transition: all 2s ease;
+  padding-top:95px;
 }
 
 .funhouse:hover {
   text-decoration:none;
   color:red;
-  font-size:4em;
+  font-size:3em;
+  white-space: nowrap;
   transition: all 2s ease;
+  vertical-align:bottom;
+  text-shadow:2px 2px 10px #882D60;
 }
 
 h1 {
