@@ -21,8 +21,8 @@
                         <h4 class="modal-title">Think you solved it?</h4>
                       </div>
                       <div class="modal-body">
-                        Passcode <input></input><br><br>
-                        <button type="button" class="btn btn-default">Submit</button>
+                        Passcode <input type="text" id="clue1"></input><br><br>
+                        <button onclick="clue1()" type="button" class="btn btn-default">Submit</button>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -30,6 +30,22 @@
                     </div>
                   </div>
                 </div>
+            <!-- Modal two -->
+            <div class="modal fade" id="myModal2" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal two content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Congratulations</h4>
+                  </div>
+                  <div class="modal-body">
+                  You solved Clue 1! <br><br>
+                    <%= link_to "Next Clue", clues_tragicheroes_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
             <ul class="nav navbar-nav navbar-right">
           <li>
@@ -60,4 +76,16 @@ $('#myAffix').affix({
     }
   }
 })
+</script>
+<script>
+
+function clue1() {
+  var value = document.getElementById("clue1").value;
+  if (value == "hello") {
+     window.alert("Correct!");
+     $('#myModal2').modal('show');
+   } else {
+      window.alert("Try again")
+   }
+ }
 </script>
