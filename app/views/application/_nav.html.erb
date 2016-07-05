@@ -9,6 +9,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:100%; text-align:center" >
 
         <% if user_signed_in? %>
+        <!-- CLUE 1 --->
           <% if current_page?(controller: 'clues', action: 'spotlight') %>
                   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display:inline-block;">Clue 1</button>
                 <!-- Modal -->
@@ -47,6 +48,52 @@
               </div>
             </div>
           <% end %>
+          <!-- END CLUE 1 -->
+
+          <!-- CLUE 2 -->
+          <% if current_page?(controller: 'clues', action: 'tragicheroes') %>
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display:inline-block;">Clue 2</button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Think you solved it?</h4>
+                      </div>
+                      <div class="modal-body">
+                        First Clue <input type="text" id="clue2pt1"></input><br>
+                        Second Clue <input type="text" id="clue2pt2"></input><br>
+                        Third Clue <input type="text" id="clue2pt3"></input><br>
+                        <button onclick="clue2()" type="button" class="btn btn-default">Submit</button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- Modal two -->
+            <div class="modal fade" id="myModal3" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal two content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Congratulations</h4>
+                  </div>
+                  <div class="modal-body">
+                    You solved Clue 1! <br><br>
+                    <%= link_to "Next Clue", clues_tragicheroes_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <!-- END CLUE 2 -->
+
+          <!-- REST OF NAVBAR -->
             <ul class="nav navbar-nav navbar-right">
           <li>
             <%= link_to current_user.email, users_info_path %>
@@ -77,8 +124,8 @@ $('#myAffix').affix({
   }
 })
 </script>
-<script>
 
+<script>
 function clue1() {
   var value = document.getElementById("clue1").value;
   if (value == "hello") {
@@ -88,4 +135,19 @@ function clue1() {
       window.alert("Try again")
    }
  }
+</script>
+
+<script>
+ function clue2() {
+   var clue2pt1 = document.getElementById("clue2pt1").value;
+   var clue2pt2 = document.getElementById("clue2pt2").value;
+   var clue2pt3 = document.getElementById("clue2pt3").value;
+
+   if (clue2pt1 == "a" && clue2pt2 == "a" && clue2pt3 == "a") {
+      window.alert("Correct!");
+      $('#myModal3').modal('show');
+    } else {
+       window.alert("Try again");
+    }
+  }
 </script>
