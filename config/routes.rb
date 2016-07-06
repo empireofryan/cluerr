@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :publications
   end
   resources :twilio
+  post 'twilio/voice' => 'twilio#voice'
   get 'clues/spotlight', to: 'clues#spotlight'
   get 'clues/tragicheroes', to: 'clues#tragicheroes'
 
