@@ -1,0 +1,1 @@
+:url => "http://twimlets.com/message?Message%5B0%5D=For%20a%20minute%20there%20i%20lost%20myself%20i%20lost%20myself%20can%20you%20solve%20the%20clue%20do%20you%20have%20what%20it%20takes%20i%20doubt%20it%20but%20yout%20cant%20try!&#{@phone.message.gsub(' ', '%20')}"
