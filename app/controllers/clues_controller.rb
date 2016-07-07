@@ -4,4 +4,7 @@ class CluesController < ApplicationController
 
   def tragicheroes
   end
+
+  def panorama
+  end
 end

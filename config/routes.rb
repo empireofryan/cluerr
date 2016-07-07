@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'twilio/voice' => 'twilio#voice'
   get 'clues/spotlight', to: 'clues#spotlight'
   get 'clues/tragicheroes', to: 'clues#tragicheroes'
+  get 'clues/panorama', to: 'clues#panorama'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
