@@ -1,11 +1,24 @@
-<div class="container">
-  <h3>Account for <%= current_user.email %></h3>
-  <% if @subscription.active %>
-    <h3>Current plans renews at <%= 
-    Time.at(@stripe_subscription["current_period_end"]).strftime("%D") %>
 
-    <%- # link_to "Cancel subscription", users_cancel_subscription_path -%>
-  <% else %>
-    <%= render 'form' %>
-  <% end %>
+<style>
+.q_back {
+  background-image: url('https://0.s3.envato.com/files/144795961/sightsignal-mysteryquestionmarkquizloop2IMG.jpg');
+  background-size: cover;
+  height:100vh;
+}
+</style>
+<div class="q_back">
+  <div class="container" style="color:white; text-align:center; font-size:4em">
+    <br><br><br><br><br>
+    <div style="background-color:rgba(192, 0, 0, 0.2); width:50vw; text-align:center; margin: 0 auto">
+      <h3 style="font-size:3vw">Account for <%= current_user.email %></h3>
+      <% if @subscription.active %>
+        <h3 style="font-size:2vw">Current plans renews at <%=
+        Time.at(@stripe_subscription["current_period_end"]).strftime("%D") %>
+    </div>
+    <br><br><br><br><br>
+      <a style="color:white"><%= link_to "Cancel subscription", users_cancel_subscription_path, {:style => 'color: white; font-size:1.5vw'} %></a>
+    <% else %>
+      <%= render 'form' %>
+    <% end %>
+  </div>
 </div>

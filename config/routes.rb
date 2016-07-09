@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'clues/spotlight', to: 'clues#spotlight'
   get 'clues/tragicheroes', to: 'clues#tragicheroes'
   get 'clues/panorama', to: 'clues#panorama'
-
+  get 'clues/sirens', to: 'clues#sirens'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

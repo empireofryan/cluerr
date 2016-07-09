@@ -15,7 +15,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <link href='panorama_viewer.css' rel='stylesheet' type='text/css'>
+
   <style>
     html {
       height: 100%;
@@ -332,13 +332,23 @@
 	  <div class="main">
       <div class="panorama">
   	   <img src="http://pages.cs.wisc.edu/~rosin/cs766/panorama/woods/woods.jpg">
-  	  </div>
+         <div style="width:100%">
+           <div class="hideme" id="infor" style="position:absolute; font-size:5em; color:red; margin-top:100px; margin-left:200px; display:none">How many do you see?</div>
+           <div class="cyclops">
+         </div>
+      </div>
     </div>
   </div>
 
 
 </body>
 </html>
+
+<script>
+jQuery("#infor").delay(5000).fadeIn("slow");
+jQuery("#infor").delay(2500).fadeOut("slow");
+
+</script>
 
 <script>
 /* ===========================================================

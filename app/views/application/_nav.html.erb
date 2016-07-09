@@ -1,17 +1,21 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
+    <div class="row">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
-      <%= link_to image_tag("Teddy.png", alt: 'Teddy', class: "emmabedroom", style: 'width:35px; margin-left:20px;'), root_path %>
+      <%= link_to image_tag("Teddy.png", alt: 'Teddy', class: "emmabedroom col-md-2", style: 'width:65px; margin-left:20px;'), root_path %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="width:100%; text-align:center" >
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="" >
 
         <% if user_signed_in? %>
         <!-- CLUE 1 --->
           <% if current_page?(controller: 'clues', action: 'spotlight') %>
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display:inline-block;">Clue 1</button>
+                <span  style="" class="col-md-2">
+                  <img src="http://previews.123rf.com/images/mtkang/mtkang1108/mtkang110800032/10285656-a-series-of-fire-numbers-in-flame-1-or-one-Stock-Photo-number.jpg" style="background-repeat: no-repeat; width:50px;">
+                </span>
+                  <button type="button" class="btn btn-info btn-lg col-md-offset-2 col-md-1" data-toggle="modal" data-target="#myModal" style="display:inline-block;">Clue 1</button>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                   <div class="modal-dialog">
@@ -19,7 +23,7 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Think you solved it?</h4>
+                        <h4 class="modal-title">Where are you?</h4>
                       </div>
                       <div class="modal-body">
                         Passcode <input type="text" id="clue1"></input><br><br>

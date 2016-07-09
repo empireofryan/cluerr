@@ -7,4 +7,7 @@ class CluesController < ApplicationController
 
   def panorama
   end
+
+  def sirens
+  end
 end
