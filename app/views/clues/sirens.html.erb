@@ -518,7 +518,47 @@ a{
 	margin: 20px;
 }
 
+
+/* Preloader */
+
+#preloader {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:black; /* change if the mask should have another color then white */
+    z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    width:800px;
+    height:800px;
+    position:absolute;
+    left:30%; /* centers the loading animation horizontally one the screen */
+    top:10%; /* centers the loading animation vertically one the screen */
+    background-image:url(http://static.tumblr.com/6bf8eca2a40c26ecdd8cfd0ceef92f3f/84sk1vz/BPcn2akkp/tumblr_static_tumblr_n1m6zgjrw91toa6e6o1_400.gif); /* path to your loading animation */
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
 </style>
+
+
+
+
+
+
+<!-- Preloader -->
+<script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(2350); // will first fade out the loading animation
+            $('#preloader').delay(1350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(1350).css({'overflow':'visible'});
+        })
+    //]]>
+</script>
 
 
 <!DOCTYPE html>
@@ -531,6 +571,9 @@ a{
         <meta name="description" content="Circle Hover Effects with CSS Transitions" />
         <meta name="keywords" content="circle, border-radius, hover, css3, transition, image, thumbnail, effect, 3d" />
         <meta name="author" content="Codrops" />
+
+
+
 
 		<!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
     </head>
@@ -574,7 +617,7 @@ a{
 							<div class="ch-info">
 								<div class="ch-info-front ch-img-2"></div>
 								<div class="ch-info-back">
-									<h3>You</h3>
+									<h3>W</h3>
 									<p>by Zoe Ingram <a href="http://drbl.in/eCcV">View on Dribbble</a></p>
 								</div>
 							</div>

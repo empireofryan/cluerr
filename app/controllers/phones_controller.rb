@@ -29,7 +29,7 @@ class PhonesController < ApplicationController
     @client.account.calls.create(
       :from => +14439633872,
       :to => @phone.number,
-      :url => 'http://twimlets.com/message?Message[0]=http://www.ryanj.tech/clapton_layla.mp3'
+      :url => 'http://twimlets.com/message?Message%5B0%5D=http%3A%2F%2Fwww.ryanj.tech%2Fmysteryvoice.mp3&'
     )
     respond_to do |format|
       if @phone.save
