@@ -17,10 +17,11 @@
     <p style='padding-top:20px; color:ghostwhite; text-align:center; font-size: 2em; color:white'>Riddles, Puzzles, Phone Calls, Text Messages, Web Hunts</p><br>
     <div style="width:100%; text-align:center"><br><br>
     <!-- <%= link_to "Sign Up", new_user_registration_path, :class => "wrap sticker funhouse" %></p> -->
-    <%= link_to "First Clue", clues_spotlight_path, :class => "wrap sticker funhouse" %>
+    <%= link_to "First Clue", logged_in? ? clues_spotlight_path : new_user_session_path, :class => "wrap sticker funhouse" %>
   </div>
   </div>
 </div>
+
 
 <div class='container-fluid' style='background-color:black'>
   <!-- <div class='col-md-6'>
